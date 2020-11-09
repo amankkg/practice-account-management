@@ -13,7 +13,7 @@ namespace UI
         public int Id { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public IEnumerable<IAccount> Accounts { get; private set; }
+        public IEnumerable<IAccount> Accounts { get; set; }
 
         /// <summary>
         /// Фабричный метод консольного клиента
@@ -23,27 +23,27 @@ namespace UI
         /// <param name="lastName">Фамилия клиента</param>
         /// <param name="accounts">Счета клиента</param>
         /// <returns>Объект клиента</returns>
-        public static ConsoleClient Create(int id, string firstName, string lastName, IEnumerable<IAccount> accounts)
+        public static ConsoleClient Create(int id, string firstName, string lastName)
         {
             return new ConsoleClient
             {
                 Id = id,
                 FirstName = firstName,
-                LastName = lastName,
-                Accounts = accounts
+                LastName = lastName
             };
         }
 
         public Task PrintSummary()
         {
-            Console.WriteLine($"First name: {FirstName}");
-            Console.WriteLine($"Last name: {LastName}");
+            Console.WriteLine($"Summary of #{Id}");
+            Console.WriteLine($"\tFirst name: {FirstName}");
+            Console.WriteLine($"\tLast name: {LastName}");
             Console.WriteLine("\nAccounts:");
-            Console.WriteLine("\n№\tBalance");
+            Console.WriteLine("\n\t#\tBalance");
 
             foreach (var acc in Accounts)
             {
-                Console.WriteLine($"{acc.Id}\t{acc.Balance}");
+                Console.WriteLine($"\t{acc.Id}\t${acc.Balance}");
             }
 
             return Task.CompletedTask;

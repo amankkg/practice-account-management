@@ -15,7 +15,7 @@ namespace BusinessLogic
         /// <summary>
         /// Счета клиента в базе
         /// </summary>
-        IEnumerable<IAccount> Accounts { get; }
+        IEnumerable<IAccount> Accounts { get; set; }
         
         /// <summary>
         /// Вывод состояния всех счетов клиента

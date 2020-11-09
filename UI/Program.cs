@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.Storage;
-using InMemory = Storage.InMemory;
+using Storage.InMemory;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,8 +12,8 @@ namespace UI
 
         static Program()
         {
-            clientStorage = new InMemory.ClientStorage(ConsoleClient.Create);
-            accountStorage = new InMemory.AccountStorage(ConsoleAccount.Create);
+            clientStorage = new InMemoryClientStorage(ConsoleClient.Create);
+            accountStorage = new InMemoryAccountStorage(ConsoleAccount.Create);
         }
 
         static async Task Main(string[] args)
@@ -35,10 +35,12 @@ namespace UI
             // 3. пополнить счет
             await johnDoeAcc.Recharge(100);
 
+            await johnDoe.PrintSummary();
+            await janeDoe.PrintSummary();
+
             // 4. сделать перевод
             await johnDoeAcc.Transfer(janeDoeAcc, 50);
 
-            // 5. вывод балансов
             await johnDoe.PrintSummary();
             await janeDoe.PrintSummary();
         }

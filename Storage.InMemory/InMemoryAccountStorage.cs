@@ -9,7 +9,7 @@ namespace Storage.InMemory
     /// <summary>
     /// Хранилище счетов в памяти
     /// </summary>
-    public class AccountStorage : IAccountStorage
+    public class InMemoryAccountStorage : IAccountStorage
     {
         Dictionary<int, List<IAccount>> accountBase = new Dictionary<int, List<IAccount>>();
         int nextId = 1;
@@ -20,7 +20,7 @@ namespace Storage.InMemory
         /// Конструктор хранилища счетов в памяти
         /// </summary>
         /// <param name="accountFactory">Фабричный метод счета с параметрами ИД (int) и Баланс (decimal)</param>
-        public AccountStorage(Func<int, decimal, IAccount> accountFactory)
+        public InMemoryAccountStorage(Func<int, decimal, IAccount> accountFactory)
         {
             this.accountFactory = accountFactory;
         }
@@ -32,6 +32,7 @@ namespace Storage.InMemory
             if (!accountBase.ContainsKey(owner.Id))
             {
                 accountBase.Add(owner.Id, new List<IAccount>());
+                owner.Accounts = accountBase[owner.Id];
             }
 
             accountBase[owner.Id].Add(account);
