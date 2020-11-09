@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="BusinessLogic.Storage.IAccountStorage">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Storage\IAccountStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BusinessLogic.Storage.IClientStorage">
+    <Position X="4.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Storage\IClientStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BusinessLogic.IAccount">
+    <Position X="1.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAgAAQAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAccount.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BusinessLogic.IClient">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAAAAAAACAAAAAAAACAAAAAAAAAAAg=</HashCode>
+      <FileName>IClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
