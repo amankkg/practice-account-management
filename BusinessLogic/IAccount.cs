@@ -7,8 +7,8 @@ namespace BusinessLogic
     /// </summary>
     public interface IAccount
     {
-        int Id { get; set; }
-        decimal Balance { get; set; }
+        int Id { get; }
+        decimal Balance { get; }
 
         /// <summary>
         /// Пополнение баланса счета

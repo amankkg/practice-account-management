@@ -1,7 +1,5 @@
-﻿using BusinessLogic;
-using BusinessLogic.Storage;
-using Storage.InMemory;
-using System;
+﻿using BusinessLogic.Storage;
+using InMemory = Storage.InMemory;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,8 +7,14 @@ namespace UI
 {
     class Program
     {
-        static IClientStorage clientStorage;// = new ClientStorage();
-        static IAccountStorage accountStorage;// = new AccountStorage();
+        readonly static IClientStorage clientStorage;
+        readonly static IAccountStorage accountStorage;
+
+        static Program()
+        {
+            clientStorage = new InMemory.ClientStorage(ConsoleClient.Create);
+            accountStorage = new InMemory.AccountStorage(ConsoleAccount.Create);
+        }
 
         static async Task Main(string[] args)
         {
