@@ -2,18 +2,23 @@
 using BusinessLogic.Storage;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Storage.InMemory
 {
-    public class ClientStorage<TClient> : IClientStorage
-        where TClient : IClient
+    /// <summary>
+    /// Хранилище клиентов в памяти
+    /// </summary>
+    public class ClientStorage : IClientStorage
     {
         List<IClient> clients = new List<IClient>();
         Func<int, string, string, IEnumerable<IAccount>, IClient> clientFactory;
         int nextId = 1;
 
+        /// <summary>
+        /// Конструктор хранилища клиентов в памяти
+        /// </summary>
+        /// <param name="clientFactory">Фабричный метод клиента с параметрами ИД (int), Имя (string), Фамилия (string) и счета клиента (IEnumerable\<IAccount\>)</param>
         public ClientStorage(Func<int, string, string, IEnumerable<IAccount>, IClient> clientFactory)
         {
             this.clientFactory = clientFactory;

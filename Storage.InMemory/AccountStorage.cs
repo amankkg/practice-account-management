@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Storage.InMemory
 {
+    /// <summary>
+    /// Хранилище счетов в памяти
+    /// </summary>
     public class AccountStorage : IAccountStorage
     {
         Dictionary<int, List<IAccount>> accountBase = new Dictionary<int, List<IAccount>>();
-        Func<int, decimal, IAccount> accountFactory;
         int nextId = 1;
 
+        readonly Func<int, decimal, IAccount> accountFactory;
+
+        /// <summary>
+        /// Конструктор хранилища счетов в памяти
+        /// </summary>
+        /// <param name="accountFactory">Фабричный метод счета с параметрами ИД (int) и Баланс (decimal)</param>
         public AccountStorage(Func<int, decimal, IAccount> accountFactory)
         {
             this.accountFactory = accountFactory;
@@ -21,14 +29,12 @@ namespace Storage.InMemory
         {
             var account = accountFactory(nextId++, 0);
 
-            if (accountBase.ContainsKey(owner.Id))
+            if (!accountBase.ContainsKey(owner.Id))
             {
-                accountBase[owner.Id].Add(account);
+                accountBase.Add(owner.Id, new List<IAccount>());
             }
-            else
-            {
-                accountBase.Add(owner.Id, new List<IAccount> { account });
-            }
+
+            accountBase[owner.Id].Add(account);
 
             return Task.FromResult(account.Id);
         }
