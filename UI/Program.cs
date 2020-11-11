@@ -1,23 +1,27 @@
-﻿using BusinessLogic.Storage;
+﻿using BusinessLogic.Services;
 using Storage.InMemory;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace UI
 {
+    class Entity
+    {
+        public int Code { get; set; }
+        public string Name { get; set; }
+        public int Balance { get; set; }
+    }
     class Program
     {
-        readonly static IClientStorage clientStorage;
-        readonly static IAccountStorage accountStorage;
-
-        static Program()
-        {
-            clientStorage = new InMemoryClientStorage(ConsoleClient.Create);
-            accountStorage = new InMemoryAccountStorage(ConsoleAccount.Create);
-        }
+        static IClientService clientStorage;
+        static IAccountService accountStorage;
 
         static async Task Main(string[] args)
         {
+            // 0. инициализировать хранилища сущностей
+            clientStorage = new InMemoryClientStorage(ConsoleClient.Create);
+            accountStorage = new InMemoryAccountStorage(ConsoleAccount.Create);
+
             // 1. создать аккаунты
             var johnDoeId = await clientStorage.Create("John", "Doe");
             var janeDoeId = await clientStorage.Create("Jane", "Doe");

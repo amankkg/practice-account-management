@@ -1,5 +1,5 @@
 ﻿using BusinessLogic;
-using BusinessLogic.Storage;
+using BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ namespace Storage.InMemory
     /// <summary>
     /// Хранилище клиентов в памяти
     /// </summary>
-    public class InMemoryClientStorage : IClientStorage
+    public class InMemoryClientStorage : IClientService
     {
         List<IClient> clients = new List<IClient>();
         Func<int, string, string, IClient> clientFactory;

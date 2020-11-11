@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 
-namespace BusinessLogic.Storage
+namespace BusinessLogic.Services
 {
     /// <summary>
-    /// Хранилище клиентов
+    /// Интерфейс службы клиентов
     /// </summary>
-    public interface IClientStorage
+    public interface IClientService
     {
         /// <summary>
         /// Регистрация нового клиента

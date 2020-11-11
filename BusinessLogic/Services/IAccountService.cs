@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Storage
+namespace BusinessLogic.Services
 {
     /// <summary>
-    /// Интерфейс хранилища счетов
+    /// Интерфейс службы счетов
     /// </summary>
-    public interface IAccountStorage
+    public interface IAccountService
     {
         /// <summary>
         /// Открытие нового счета

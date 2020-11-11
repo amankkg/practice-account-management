@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{DD995FCA-CD3A-4E93-A29E-D01B5EACABC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{DD995FCA-CD3A-4E93-A29E-D01B5EACABC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{2D35E2B7-0BD4-4585-B7F5-B6FF1ECA877E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{2D35E2B7-0BD4-4585-B7F5-B6FF1ECA877E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.InMemory", "Storage.InMemory\Storage.InMemory.csproj", "{81B131EC-C999-473B-9DE3-379D0790A155}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.InMemory", "Storage.InMemory\Storage.InMemory.csproj", "{81B131EC-C999-473B-9DE3-379D0790A155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.SQLServer", "Storage.SQLServer\Storage.SQLServer.csproj", "{D2228DF3-DDFC-4465-AAF9-792F9810ACB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{5DD4C7F2-FB21-4DDA-B560-C903A01D5983}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,17 @@ Global
 		{81B131EC-C999-473B-9DE3-379D0790A155}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81B131EC-C999-473B-9DE3-379D0790A155}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81B131EC-C999-473B-9DE3-379D0790A155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2228DF3-DDFC-4465-AAF9-792F9810ACB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2228DF3-DDFC-4465-AAF9-792F9810ACB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2228DF3-DDFC-4465-AAF9-792F9810ACB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2228DF3-DDFC-4465-AAF9-792F9810ACB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81B131EC-C999-473B-9DE3-379D0790A155} = {5DD4C7F2-FB21-4DDA-B560-C903A01D5983}
+		{D2228DF3-DDFC-4465-AAF9-792F9810ACB9} = {5DD4C7F2-FB21-4DDA-B560-C903A01D5983}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B68C5C2D-6C84-4E75-915E-A9204F6A37D8}

@@ -1,5 +1,5 @@
 ﻿using BusinessLogic;
-using BusinessLogic.Storage;
+using BusinessLogic.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ namespace Storage.InMemory
     /// <summary>
     /// Хранилище счетов в памяти
     /// </summary>
-    public class InMemoryAccountStorage : IAccountStorage
+    public class InMemoryAccountStorage : IAccountService
     {
         Dictionary<int, List<IAccount>> accountBase = new Dictionary<int, List<IAccount>>();
         int nextId = 1;
