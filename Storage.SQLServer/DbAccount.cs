@@ -1,31 +1,46 @@
 ﻿using BusinessLogic;
 using Storage.SQLServer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Storage.SQLServer
 {
     public class DbAccount : Account, IAccount
     {
-        readonly AccountManagementDbContext dbContext;
+        readonly AccountManagementDbContext db;
 
-        public DbAccount(AccountManagementDbContext dbContext)
+        public DbAccount(AccountManagementDbContext db, Account account)
         {
-            this.dbContext = dbContext;
+            this.db = db;
+            Id = account.Id;
+            Balance = account.Balance;
+            ClientId = account.ClientId;
+            Client = account.Client;
         }
 
         public virtual async Task Recharge(decimal amount)
         {
-            // TODO: сделать изменения в контексте БД
-            await dbContext.SaveChangesAsync();
+            Balance += amount;
+
+            // TODO: detach old entity first
+            db.Accounts.Update(this);
+
+            await db.SaveChangesAsync();
         }
 
         public virtual async Task Transfer(IAccount to, decimal amount)
         {
-            // TODO: сделать изменения в контексте БД
-            await dbContext.SaveChangesAsync();
+            Balance -= amount;
+            to.Balance += amount;
+
+            var tasks = new[] { Id, to.Id }.Select(id => db.Accounts.FindAsync(id).AsTask());
+
+            var accounts = await Task.WhenAll(tasks);
+
+            accounts[0].Balance = Balance;
+            accounts[1].Balance = to.Balance;
+
+            await db.SaveChangesAsync();
         }
     }
 }

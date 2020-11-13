@@ -1,40 +1,40 @@
 ﻿using BusinessLogic.Services;
 using Storage.InMemory;
+using Storage.SQLServer;
+using Storage.SQLServer.Services;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace UI
 {
-    class Entity
-    {
-        public int Code { get; set; }
-        public string Name { get; set; }
-        public int Balance { get; set; }
-    }
     class Program
     {
-        static IClientService clientStorage;
-        static IAccountService accountStorage;
+        static IClientService clientService;
+        static IAccountService accountService;
 
         static async Task Main(string[] args)
         {
             // 0. инициализировать хранилища сущностей
-            clientStorage = new InMemoryClientStorage(ConsoleClient.Create);
-            accountStorage = new InMemoryAccountStorage(ConsoleAccount.Create);
+            Console.WriteLine("Which storage you want to use?\n\t- in-memory storage [1]\n\t- database storage [2]\n");
+            var storageInput = Console.ReadLine();
+            var storageNum = int.Parse(storageInput);
+
+            await InitServices(storageNum);
 
             // 1. создать аккаунты
-            var johnDoeId = await clientStorage.Create("John", "Doe");
-            var janeDoeId = await clientStorage.Create("Jane", "Doe");
+            var johnDoeId = await clientService.Create("John", "Doe");
+            var janeDoeId = await clientService.Create("Jane", "Doe");
             
-            var johnDoe = await clientStorage.Get(johnDoeId);
-            var janeDoe = await clientStorage.Get(janeDoeId);
+            var johnDoe = await clientService.Get(johnDoeId);
+            var janeDoe = await clientService.Get(janeDoeId);
 
             // 2. создать счета
-            await accountStorage.Create(johnDoe);
-            await accountStorage.Create(janeDoe);
+            await accountService.Create(johnDoe);
+            await accountService.Create(janeDoe);
 
-            var johnDoeAcc = (await accountStorage.GetAll(johnDoe)).First();
-            var janeDoeAcc = (await accountStorage.GetAll(janeDoe)).First();
+            var johnDoeAcc = (await accountService.GetAll(johnDoe)).First();
+            var janeDoeAcc = (await accountService.GetAll(janeDoe)).First();
 
             // 3. пополнить счет
             await johnDoeAcc.Recharge(100);
@@ -47,6 +47,29 @@ namespace UI
 
             await johnDoe.PrintSummary();
             await janeDoe.PrintSummary();
+        }
+
+        static async Task InitServices(int storage)
+        {
+            switch (storage)
+            {
+                case 1:
+                    clientService = new InMemoryClientStorage(ConsoleClient.Create);
+                    accountService = new InMemoryAccountStorage(ConsoleAccount.Create);
+
+                    break;
+                case 2:
+                    var db = new AccountManagementDbContext();
+                    
+                    clientService = new DbClientService(db, ConsoleClient.CreateFromDbEntity);
+                    accountService = new DbAccountService(db);
+
+                    break;
+                default:
+                    throw new Exception("Storage not found");
+            }
+
+            await Task.CompletedTask;
         }
     }
 }

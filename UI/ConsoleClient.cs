@@ -1,6 +1,6 @@
-﻿using BusinessLogic;
+﻿using Storage.SQLServer;
+using Storage.SQLServer.Entities;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace UI
@@ -8,12 +8,22 @@ namespace UI
     /// <summary>
     /// Реализация интерфейса IClient для консольного приложения
     /// </summary>
-    class ConsoleClient : IClient
+    class ConsoleClient : DbClient
     {
-        public int Id { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public IEnumerable<IAccount> Accounts { get; set; }
+        /// <summary>
+        /// Фабричный метод клиента для БД
+        /// </summary>
+        /// <param name="client">Сущность клинета БД</param>
+        /// <returns>Объект клиента</returns>
+        public static ConsoleClient CreateFromDbEntity(Client client)
+        {
+            return new ConsoleClient
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                LastName = client.LastName
+            };
+        }
 
         /// <summary>
         /// Фабричный метод консольного клиента
@@ -33,7 +43,7 @@ namespace UI
             };
         }
 
-        public Task PrintSummary()
+        public override Task PrintSummary()
         {
             Console.WriteLine($"Summary of #{Id}");
             Console.WriteLine($"\tFirst name: {FirstName}");

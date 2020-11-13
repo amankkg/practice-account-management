@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Storage.InMemory.InMemoryAccount" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Storage.InMemory.InMemoryAccountStorage" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3.25" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.194" />
+  </Class>
+  <Class Name="Storage.InMemory.InMemoryClientStorage" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="3.25" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.ConsoleDbAccount">
+    <Position X="13.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleDbAccount.cs</FileName>
+      <NewMemberFileName>ConsoleAccount.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.ConsoleClient">
+    <Position X="7.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.Program" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAABAAAAAAAAAAAAAAAAAAAAQAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Storage.SQLServer.DbClient">
+    <Position X="9.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Storage.SQLServer.DbAccount">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Storage.SQLServer.Entities.Account">
+    <Position X="15.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Storage.SQLServer.Entities.Client">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Storage.SQLServer.Services.DbAccountService">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Storage.SQLServer.Services.DbClientService">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.ConsoleAccount">
+    <Position X="1" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAEEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BusinessLogic.Services.IAccountService" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BusinessLogic.Services.IClientService" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BusinessLogic.IAccount" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BusinessLogic.IClient" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
